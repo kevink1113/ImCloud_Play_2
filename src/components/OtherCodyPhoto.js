@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { BsBookmarkFill, BsBookmark } from 'react-icons/bs';
 import { IoShareOutline } from 'react-icons/io5';
+import Button from './Button';
 
 const PhotoContainer = styled.div`
 	img {
@@ -81,13 +82,11 @@ class OtherCodyPhoto extends Component {
 	render() {
 		return (
 			<PhotoContainer>
-				<img src="./1.jpg" />
-				<LikeShare />
+				<img src="../1.jpg" />
+				{this.props.showLikeShare === true ? <LikeShare /> : ''}
 			</PhotoContainer>
 		);
 	}
 }
-
-const CalendarContain = styled.div``;
 
 export default OtherCodyPhoto;

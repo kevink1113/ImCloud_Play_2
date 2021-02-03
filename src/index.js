@@ -4,7 +4,14 @@ import './index.css';
 import Attend from './Attend';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
+
 import OtherCodyDetail from './OtherCodyDetail';
+
+import { BrowserRouter, Route } from 'react-router-dom';
+import Play2_MainPage from './components/Play2_MainPage';
+import UploadPhoto from './upload/UploadPhoto';
+import MyCodyRoom from './MyCodyRoom';
+import MyCodyRoomList from './MyCodyRoomList';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -16,19 +23,26 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-function App() {
+function Play2() {
 	return (
-		<React.Fragment>
-			<Attend />
-			<OtherCodyDetail />
-		</React.Fragment>
+		<div className="total">
+			{/*  메뉴창  */}
+			<Route exact path="/" component={UploadPhoto}></Route>
+			<Route path="/my" component={MyCodyRoom}></Route>
+			<Route path="/others">
+				<OtherCodyDetail isOther />
+			</Route>
+			<Route path="/attend" component={Attend}></Route>
+		</div>
 	);
 }
 
 ReactDOM.render(
 	<React.Fragment>
 		<GlobalStyle />
-		<App />
+		<BrowserRouter>
+			<Play2 />
+		</BrowserRouter>
 	</React.Fragment>,
 	document.getElementById('root'),
 );
