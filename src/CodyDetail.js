@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import styled from 'styled-components';
-import OtherCodyPhoto from './components/OtherCodyPhoto';
+import CodyPhoto from './components/CodyPhoto';
 import Statistics from './components/Statistics';
 import Button from './components/Button';
 import Play2_MainPage from './components/Play2_MainPage';
@@ -127,22 +127,22 @@ class OtherCodyDetail extends Component {
 				<StyledCodyDetail>
 					{this.props.isOther ? (
 						<>
-							<OtherCodyPhoto src showLikeShare />
+							<CodyPhoto src showLikeShare likes={30} />
 							<Details>
 								<Statistics data={data} data2={data2} />
 								<ButtonContainer>
-									<Button size="large" label="목록으로" />
+									<Button link="/others" size="large" label="목록으로" />
 								</ButtonContainer>
 							</Details>
 						</>
 					) : (
 						<>
-							<OtherCodyPhoto src />
+							<CodyPhoto src />
 							<Details>
 								<Statistics data={data} data2={data3} />
 								<ButtonContainer>
 									<Button size="large" label="공유하기" />
-									<Button size="large" label="목록으로" />
+									<Button link="/my" size="large" label="목록으로" />
 								</ButtonContainer>
 							</Details>
 						</>

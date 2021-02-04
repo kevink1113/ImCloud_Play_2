@@ -2,8 +2,8 @@ import React, { Component, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import moment from 'moment';
 import { BiCalendarCheck } from 'react-icons/bi';
-import AttendCal from './components/AttendCal';
-import Play2_MainPage from './components/Play2_MainPage';
+import AttendCal from '../components/AttendCal';
+import Play2_MainPage from '../components/Play2_MainPage';
 
 const selectedDays = [
 	moment().add(-1, 'days'),

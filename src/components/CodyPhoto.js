@@ -17,8 +17,19 @@ const StyledLikeShare = styled.div`
 	display: flex;
 	.icon {
 		cursor: pointer;
+		padding-left: 10px;
 		padding-right: 10px;
+		z-index: 99999999;
 	}
+	#heart {
+		padding-left: 0px;
+		padding-right: 5px;
+	}
+`;
+
+const Likes = styled.div`
+	display: flex;
+	align-items: center;
 `;
 
 class LikeShare extends Component {
@@ -33,22 +44,30 @@ class LikeShare extends Component {
 			<StyledLikeShare>
 				<div>
 					{like ? (
-						<AiFillHeart
-							className="icon"
-							size={40}
-							color={'#ff4500'}
-							onClick={() => {
-								this.setState({ like: false });
-							}}
-						/>
+						<Likes>
+							<AiFillHeart
+								id="heart"
+								className="icon"
+								size={40}
+								color={'#ff4500'}
+								onClick={() => {
+									this.setState({ like: false });
+								}}
+							/>
+							{this.props.likes + 1}
+						</Likes>
 					) : (
-						<AiOutlineHeart
-							className="icon"
-							size={40}
-							onClick={() => {
-								this.setState({ like: true });
-							}}
-						/>
+						<Likes>
+							<AiOutlineHeart
+								id="heart"
+								className="icon"
+								size={40}
+								onClick={() => {
+									this.setState({ like: true });
+								}}
+							/>
+							{this.props.likes}
+						</Likes>
 					)}
 				</div>
 
@@ -78,15 +97,15 @@ class LikeShare extends Component {
 	}
 }
 
-class OtherCodyPhoto extends Component {
+class CodyPhoto extends Component {
 	render() {
 		return (
 			<PhotoContainer>
 				<img src="../1.jpg" />
-				{this.props.showLikeShare === true ? <LikeShare /> : ''}
+				{this.props.showLikeShare === true ? <LikeShare likes={this.props.likes} /> : ''}
 			</PhotoContainer>
 		);
 	}
 }
 
-export default OtherCodyPhoto;
+export default CodyPhoto;

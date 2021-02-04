@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Attend from './Attend';
+import Attend from './attendence/Attend';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 
-import OtherCodyDetail from './OtherCodyDetail';
+import OtherCodyDetail from './CodyDetail';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import Play2_MainPage from './components/Play2_MainPage';
 import UploadPhoto from './upload/UploadPhoto';
-import MyCodyRoom from './MyCodyRoom';
-import MyCodyRoomList from './MyCodyRoomList';
+import MyCodyRoom from './myCodyRoom/MyCodyRoom';
+import MyCodyRoomList from './myCodyRoom/MyCodyRoomList';
+import OtherCody from './shareRoom/OtherCody';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -29,9 +30,7 @@ function Play2() {
 			{/*  메뉴창  */}
 			<Route exact path="/" component={UploadPhoto}></Route>
 			<Route path="/my" component={MyCodyRoom}></Route>
-			<Route path="/others">
-				<OtherCodyDetail isOther />
-			</Route>
+			<Route path="/others" component={OtherCody}></Route>
 			<Route path="/attend" component={Attend}></Route>
 		</div>
 	);

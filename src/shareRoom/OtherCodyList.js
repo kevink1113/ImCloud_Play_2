@@ -1,68 +1,85 @@
 import React, { Component, useState } from 'react';
 import styled from 'styled-components';
-import OtherCodyPhoto from './components/OtherCodyPhoto';
-import Statistics from './components/Statistics';
-import Button from './components/Button';
+import OtherCodyPhoto from '../components/CodyPhoto';
+import Statistics from '../components/Statistics';
+import Button from '../components/Button';
 import { Link } from 'react-router-dom';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { BsBookmarkFill, BsBookmark } from 'react-icons/bs';
+import { IoShareOutline } from 'react-icons/io5';
 
-const data = [
+import LikeShare from '../components/LikeShare';
+
+let data = [
 	{
-		date: '1월 17일',
+		date: '3월 17일',
+		likes: 30,
 		img:
 			'https://images.unsplash.com/photo-1573649027689-060a6275c33a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
 	},
 	{
-		date: '2월 3일',
+		date: '2월 24일',
+		likes: 30,
 		img:
 			'https://images.unsplash.com/photo-1610902188765-fcdeff499d75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
 	},
 	{
-		date: '2월 4일',
-		img:
-			'https://images.unsplash.com/photo-1573649027689-060a6275c33a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
-	},
-	{
-		date: '2월 5일',
-		img:
-			'https://images.unsplash.com/photo-1610902188765-fcdeff499d75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-	},
-	{
-		date: '2월 7일',
-		img:
-			'https://images.unsplash.com/photo-1573649027689-060a6275c33a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
-	},
-	{
-		date: '2월 8일',
-		img:
-			'https://images.unsplash.com/photo-1610902188765-fcdeff499d75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-	},
-	{
-		date: '2월 13일',
-		img:
-			'https://images.unsplash.com/photo-1573649027689-060a6275c33a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
-	},
-	{
-		date: '2월 15일',
-		img:
-			'https://images.unsplash.com/photo-1610902188765-fcdeff499d75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-	},
-	{
-		date: '2월 16일',
+		date: '2월 23일',
+		likes: 30,
 		img:
 			'https://images.unsplash.com/photo-1573649027689-060a6275c33a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
 	},
 	{
 		date: '2월 18일',
+		likes: 30,
 		img:
 			'https://images.unsplash.com/photo-1610902188765-fcdeff499d75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
 	},
 	{
-		date: '3월 1일',
+		date: '2월 17일',
+		likes: 15,
 		img:
 			'https://images.unsplash.com/photo-1573649027689-060a6275c33a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
 	},
 	{
-		date: '3월 3일',
+		date: '2월 16일',
+		likes: 12,
+		img:
+			'https://images.unsplash.com/photo-1610902188765-fcdeff499d75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+	},
+	{
+		date: '2월 13일',
+		likes: 18,
+		img:
+			'https://images.unsplash.com/photo-1573649027689-060a6275c33a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
+	},
+	{
+		date: '2월 12일',
+		likes: 30,
+		img:
+			'https://images.unsplash.com/photo-1610902188765-fcdeff499d75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+	},
+	{
+		date: '2월 11일',
+		likes: 30,
+		img:
+			'https://images.unsplash.com/photo-1573649027689-060a6275c33a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
+	},
+	{
+		date: '2월 9일',
+		likes: 21,
+		img:
+			'https://images.unsplash.com/photo-1610902188765-fcdeff499d75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+	},
+	{
+		date: '2월 7일',
+		likes: 30,
+		img:
+			'https://images.unsplash.com/photo-1573649027689-060a6275c33a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
+	},
+	{
+		date: '2월 3일',
+		likes: 42,
 		img:
 			'https://images.unsplash.com/photo-1610902188765-fcdeff499d75?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
 	},
@@ -105,20 +122,23 @@ const CodyContainer = styled.a`
 	color: black;
 `;
 
-class MyCodyRoomList extends Component {
+class OtherCodyList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			detail: false,
+			like: false,
+			bookmark: false,
 		};
 	}
 
 	render() {
+		const { like, bookmark } = this.state;
 		return (
 			<ListContainer>
-				{data.reverse().map((value, index) => {
+				{data.map((value, index) => {
 					return (
-						<Link to={`${this.props.match.url}/${index}`} style={{ textDecoration: 'none' }}>
+						<div>
 							<CodyContainer
 								onClick={() => {
 									this.setState({ detail: true });
@@ -127,10 +147,17 @@ class MyCodyRoomList extends Component {
 								// href={`https://lookylooks/mycody/${index}`}
 								key={index}
 							>
-								<img src={value.img} />
-								<p>{value.date}</p>
+								<Link
+									to={`${this.props.match.url}/${index}`}
+									style={{ textDecoration: 'none', color: 'black' }}
+								>
+									<img src={value.img} />
+									<p>OTHER {value.date}</p>
+								</Link>
+
+								<LikeShare index={index} data={data} />
 							</CodyContainer>
-						</Link>
+						</div>
 					);
 				})}
 			</ListContainer>
@@ -138,4 +165,4 @@ class MyCodyRoomList extends Component {
 	}
 }
 
-export default MyCodyRoomList;
+export default OtherCodyList;

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import UploadPhoto from '../upload/UploadPhoto';
-import Attend from '../Attend';
+import Attend from '../attendence/Attend';
 
-import MyCodyRoom from '../MyCodyRoom';
-import OtherCodyDetail from '../OtherCodyDetail';
-import MyCodyRoomList from '../MyCodyRoomList';
+import MyCodyRoom from '../myCodyRoom/MyCodyRoom';
+import OtherCodyDetail from '../CodyDetail';
+import MyCodyRoomList from '../myCodyRoom/MyCodyRoomList';
 
 const obj = {
 	//각 메뉴별 표시할 컨텐츠
