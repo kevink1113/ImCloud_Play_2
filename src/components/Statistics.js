@@ -56,4 +56,5 @@ const ChartsContainer = styled.div`
 
 	margin: 2rem;
 	justify-content: space-between;
+	justify-content: center !important;
 `;

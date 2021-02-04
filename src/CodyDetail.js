@@ -4,6 +4,8 @@ import CodyPhoto from './components/CodyPhoto';
 import Statistics from './components/Statistics';
 import Button from './components/Button';
 import Play2_MainPage from './components/Play2_MainPage';
+import SideBar from './components/SideBar';
+import SideBarOther from './components/SideBarOther';
 
 const data = {
 	labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -86,6 +88,10 @@ const data3 = {
 	],
 };
 
+const CodyDetailContainer = styled.div`
+	display: flex;
+`;
+
 const InfoContainer = styled.div`
 	display: flex;
 	justify-content: center;
@@ -105,6 +111,7 @@ const StyledCodyDetail = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
+	flex-grow: 1;
 `;
 
 const Details = styled.div`
@@ -123,7 +130,8 @@ const ButtonContainer = styled.div`
 class OtherCodyDetail extends Component {
 	render() {
 		return (
-			<>
+			<CodyDetailContainer>
+				<>{this.props.isOther ? <SideBarOther /> : <SideBar />}</>
 				<StyledCodyDetail>
 					{this.props.isOther ? (
 						<>
@@ -148,7 +156,7 @@ class OtherCodyDetail extends Component {
 						</>
 					)}
 				</StyledCodyDetail>
-			</>
+			</CodyDetailContainer>
 		);
 	}
 }

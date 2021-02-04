@@ -5,6 +5,8 @@ import { MdFileUpload } from 'react-icons/md';
 import Loading from './Loading';
 import { Link } from 'react-router-dom';
 import Play2_MainPage from '../components/Play2_MainPage';
+import Button from '../components/Button';
+import { darken } from 'polished';
 
 const UploadContainer = styled.div`
 	display: flex;
@@ -117,31 +119,35 @@ const DivContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align: center;
+	justify-content: space-around;
 	text-align: center;
+	height: 70vh;
+	align-items: center;
 `;
 
 const AfTitle = styled.h1`
-	padding-top: 70px;
-	padding-bottom: 130px;
 	text-align: center;
+	height: 30vh;
 `;
 
-const LinkButton = styled.div`
-  text-align: center;
-  color:white;
-  background-color:rgb(160,160,160);
-  margin: 25px auto;
-  width:200px;
-  height 50px;
-  border-radius:4px;
+const Refresh = styled(Link)`
+	cursor: pointer;
+	display: inline-block;
+	background-color: rgb(100, 100, 100);
+	border: none;
+	border-radius: 2px;
+	line-height: 1;
+	color: white;
+	transition: color 0.2s, background-color 0.2s;
 
-  transition: all 0.3s;
-  &:hover {
-    background-color: rgb(207, 207, 207);
-    color:rgb(20,20,20);
-    cursor:pointer
-  }
-  
+	padding: 0.8rem 1.5rem;
+	font-size: 1.2rem;
+
+	&:hover {
+		background-color: ${darken(0.1, 'rgb(100, 100, 100)')};
+	}
+
+	text-decoration: none;
 `;
 
 class UploadPhoto extends Component {
@@ -165,6 +171,7 @@ class UploadPhoto extends Component {
 			//console.log(URL.createObjectURL(img));
 			this.setState({
 				image: URL.createObjectURL(img),
+				selectedFile: event.target.files[0],
 			});
 			//console.log(this.state.image);
 			//
@@ -177,21 +184,17 @@ class UploadPhoto extends Component {
 		});
 	}
 
-	handlePost() {
+	handlePost = () => {
+		// console.log();
 		const formData = new FormData();
-		formData.append('/api/upload', this.state.selectedFile);
-
-		return axios
-			.post('/api/upload', formData)
-			.then((res) => {
-				alert('업로드 성공');
-				console.log('업로드 성공');
-			})
-			.catch((err) => {
-				//alert("업로드 실패");
-				console.log('업로드 실패');
-			});
-	}
+		// console.log(formData);
+		formData.append('image', this.state.selectedFile, this.state.selectedFile.name);
+		// console.log(this.state.selectedFile);
+		// console.log('handlepost is working');
+		axios.post('gs://react-image-upload-test-81e0f.appspot.com', formData).then((res) => {
+			console.log(res);
+		});
+	};
 
 	onLoading = () => {
 		setTimeout(
@@ -202,11 +205,12 @@ class UploadPhoto extends Component {
 					final: 'inline',
 				});
 			}.bind(this),
-			3500,
+			3000,
 		);
 	};
 
 	refresh = (e) => {
+		console.log('REFRESH!!!');
 		this.setState({
 			isUploaded: null,
 			selectedFile: null,
@@ -245,7 +249,7 @@ class UploadPhoto extends Component {
 											type="file"
 											name=""
 											title="사진을 올리세요"
-											onChange={((e) => this.handleFileInput(e), (e) => this.onImageChange(e))}
+											onChange={(e) => this.onImageChange(e)}
 										/>
 									</ContainerDiv>
 								</div>
@@ -266,11 +270,13 @@ class UploadPhoto extends Component {
 								console.log('image null !');
 							} else {
 								console.log(this.state.image);
+								console.log(this.state.selectedFile);
 								this.setState({
 									visible: 'none',
 									loading: 'inline',
 								});
 								this.onLoading();
+								this.handlePost();
 							}
 						}.bind(this)}
 					>
@@ -283,14 +289,8 @@ class UploadPhoto extends Component {
 				<div style={{ display: this.state.final }}>
 					<DivContainer>
 						<AfTitle>분석 완료</AfTitle>
-
-						<Link to="/2" style={{ textDecoration: 'none' }}>
-							<LinkButton>보러 가기</LinkButton>
-						</Link>
-
-						<Link to="/" style={{ textDecoration: 'none' }} onClick={this.refresh}>
-							<LinkButton>한번 더 업로드</LinkButton>
-						</Link>
+						<Button link="/my" size="large" label="보러 가기" />
+						<Refresh onClick={this.refresh}>한번 더 업로드</Refresh>
 					</DivContainer>
 				</div>
 			</div>

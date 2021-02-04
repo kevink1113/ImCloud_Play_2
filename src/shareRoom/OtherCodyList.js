@@ -9,6 +9,7 @@ import { BsBookmarkFill, BsBookmark } from 'react-icons/bs';
 import { IoShareOutline } from 'react-icons/io5';
 
 import LikeShare from '../components/LikeShare';
+import SideBarOther from '../components/SideBarOther';
 
 let data = [
 	{
@@ -85,6 +86,10 @@ let data = [
 	},
 ];
 
+const MyCodyContainer = styled.div`
+	display: flex;
+`;
+
 const ListContainer = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -115,9 +120,6 @@ const CodyContainer = styled.a`
 		padding-left: 20px;
 	}
 
-	&:hover {
-		transform: scale(1.02);
-	}
 	text-decoration: none;
 	color: black;
 `;
@@ -135,32 +137,35 @@ class OtherCodyList extends Component {
 	render() {
 		const { like, bookmark } = this.state;
 		return (
-			<ListContainer>
-				{data.map((value, index) => {
-					return (
-						<div>
-							<CodyContainer
-								onClick={() => {
-									this.setState({ detail: true });
-									document.body.style.overflowY = 'scroll';
-								}}
-								// href={`https://lookylooks/mycody/${index}`}
-								key={index}
-							>
-								<Link
-									to={`${this.props.match.url}/${index}`}
-									style={{ textDecoration: 'none', color: 'black' }}
+			<MyCodyContainer>
+				<SideBarOther />
+				<ListContainer>
+					{data.map((value, index) => {
+						return (
+							<div>
+								<CodyContainer
+									onClick={() => {
+										this.setState({ detail: true });
+										document.body.style.overflowY = 'scroll';
+									}}
+									// href={`https://lookylooks/mycody/${index}`}
+									key={index}
 								>
-									<img src={value.img} />
-									<p>OTHER {value.date}</p>
-								</Link>
+									<Link
+										to={`${this.props.match.url}/${index}`}
+										style={{ textDecoration: 'none', color: 'black' }}
+									>
+										<img src={value.img} />
+										<p>OTHER {value.date}</p>
+									</Link>
 
-								<LikeShare index={index} data={data} />
-							</CodyContainer>
-						</div>
-					);
-				})}
-			</ListContainer>
+									<LikeShare index={index} data={data} />
+								</CodyContainer>
+							</div>
+						);
+					})}
+				</ListContainer>
+			</MyCodyContainer>
 		);
 	}
 }

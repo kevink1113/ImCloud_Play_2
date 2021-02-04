@@ -5,6 +5,8 @@ import Statistics from '../components/Statistics';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 
+import SideBar from '../components/SideBar';
+
 const data = [
 	{
 		date: '3월3일',
@@ -68,6 +70,10 @@ const data = [
 	},
 ];
 
+const MyCodyContainer = styled.div`
+	display: flex;
+`;
+
 const ListContainer = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -97,10 +103,6 @@ const CodyContainer = styled.a`
 	p {
 		padding-left: 20px;
 	}
-
-	&:hover {
-		transform: scale(1.02);
-	}
 	text-decoration: none;
 	color: black;
 `;
@@ -115,25 +117,28 @@ class MyCodyRoomList extends Component {
 
 	render() {
 		return (
-			<ListContainer>
-				{data.map((value, index) => {
-					return (
-						<Link to={`${this.props.match.url}/${index}`} style={{ textDecoration: 'none' }}>
-							<CodyContainer
-								onClick={() => {
-									this.setState({ detail: true });
-									document.body.style.overflowY = 'scroll';
-								}}
-								// href={`https://lookylooks/mycody/${index}`}
-								key={index}
-							>
-								<img src={value.img} />
-								<p>{value.date}</p>
-							</CodyContainer>
-						</Link>
-					);
-				})}
-			</ListContainer>
+			<MyCodyContainer>
+				<SideBar />
+				<ListContainer>
+					{data.map((value, index) => {
+						return (
+							<Link to={`${this.props.match.url}/${index}`} style={{ textDecoration: 'none' }}>
+								<CodyContainer
+									onClick={() => {
+										this.setState({ detail: true });
+										document.body.style.overflowY = 'scroll';
+									}}
+									// href={`https://lookylooks/mycody/${index}`}
+									key={index}
+								>
+									<img src={value.img} />
+									<p>{value.date}</p>
+								</CodyContainer>
+							</Link>
+						);
+					})}
+				</ListContainer>
+			</MyCodyContainer>
 		);
 	}
 }
