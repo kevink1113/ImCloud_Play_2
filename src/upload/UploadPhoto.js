@@ -10,6 +10,7 @@ import { darken } from 'polished';
 
 const UploadContainer = styled.div`
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 	margin: 30px 0px;
@@ -61,9 +62,9 @@ const UploadButton = styled.button`
 `;
 
 const UploadDesc = styled.div`
-margin:0px 6%;
-width:300px;
-height 300px;
+	margin:0px 6%;
+	width:300px;
+	height 300px;
 `;
 
 const UploadClick = styled.div`
