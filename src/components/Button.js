@@ -48,9 +48,11 @@ const ButtonStyle = styled.button`
 
 const Button = ({ link, label, size, disabled }) => {
 	return (
-		<ButtonStyle className={size} disabled={disabled}>
-			{label}
-		</ButtonStyle>
+		<Link to={link}>
+			<ButtonStyle className={size} disabled={disabled}>
+				{label}
+			</ButtonStyle>
+		</Link>
 	);
 };
 
