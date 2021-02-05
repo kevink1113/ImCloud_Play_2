@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { MdFileUpload } from 'react-icons/md';
 import Loading from './Loading';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Play2_MainPage from '../components/Play2_MainPage';
 import Button from '../components/Button';
 import { darken } from 'polished';
@@ -18,7 +18,7 @@ const UploadContainer = styled.div`
 
 const UploadTitle = styled.h1`
 	padding-top: 40px;
-	padding-bottom: 65px;
+	padding-bottom: 50px;
 	text-align: center;
 `;
 
@@ -40,8 +40,10 @@ const UploadButton = styled.button`
   color:rgb(250,250,250);
   position:absolute; 
   top:auto; left:50%;
-  margin-top:80px;
+  //
+  margin-top:20px;
   margin-left:-100px; 
+  //
   width:200px;
   height 50px;
   background-color: rgb(100, 100, 100);
@@ -131,7 +133,7 @@ const AfTitle = styled.h1`
 	height: 30vh;
 `;
 
-const Refresh = styled(Link)`
+const Refresh = styled.div`
 	cursor: pointer;
 	display: inline-block;
 	background-color: rgb(100, 100, 100);

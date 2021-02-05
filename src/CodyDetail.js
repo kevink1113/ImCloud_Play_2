@@ -138,7 +138,7 @@ class OtherCodyDetail extends Component {
 							<Details>
 								<Statistics data={data} data2={data3} />
 								<ButtonContainer>
-									<Button size="large" label="공유하기" />
+									<Button link="/my" size="large" label="공유하기" />
 									<Button link="/my" size="large" label="목록으로" />
 								</ButtonContainer>
 							</Details>

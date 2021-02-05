@@ -7,7 +7,7 @@ import { darken } from 'polished';
 export const sizes = ['small', 'medium', 'large'];
 
 export const buttonProps = {
-	link: PropTypes.string.isRequired,
+	link: PropTypes.string,
 	label: PropTypes.string.isRequired,
 	size: PropTypes.oneOf(sizes),
 	disabled: PropTypes.bool,

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { HorizontalBar, Doughnut } from '@reactchartjs/react-chart.js';
 
 export const statisticsProps = {
-	data: PropTypes.array.isRequired,
-	data2: PropTypes.array.isRequired,
+	data: PropTypes.object.isRequired,
+	data2: PropTypes.object.isRequired,
 };
 
 class Statistics extends Component {
