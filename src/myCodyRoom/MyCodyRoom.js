@@ -7,7 +7,7 @@ import OtherCodyDetail from '../CodyDetail';
 import Play2_MainPage from '../components/Play2_MainPage';
 
 export const roomProps = {
-	match: PropTypes.element,
+	match: PropTypes.object,
 };
 
 export function MyCodyRoom({ match }) {

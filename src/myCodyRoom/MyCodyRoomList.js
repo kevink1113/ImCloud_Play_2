@@ -68,7 +68,7 @@ const data = [
 ];
 
 const roomProps = {
-	match: PropTypes.element,
+	match: PropTypes.object,
 };
 
 class MyCodyRoomList extends Component {

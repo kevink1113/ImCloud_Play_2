@@ -13,7 +13,6 @@ const obj = {
 */
 
 export const mainPageProps = {
-	startNumber: PropTypes.number.isRequired,
 	tab1: PropTypes.bool.isRequired,
 	tab2: PropTypes.bool.isRequired,
 	tab3: PropTypes.bool.isRequired,
@@ -25,7 +24,6 @@ class Play2_MainPage extends Component {
 		super(props);
 		this.state = {
 			//현재 표시되는 창 id, 1부터 시작
-			activeTab: this.props.startNumber,
 
 			//탭 정보, 배열 인덱스에 따라 0부터 시작
 			//탭이 true이면 선택된 상태, false면 선택 안됨

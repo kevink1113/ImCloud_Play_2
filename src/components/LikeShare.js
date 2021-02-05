@@ -6,7 +6,7 @@ import { BsBookmarkFill, BsBookmark } from 'react-icons/bs';
 import { IoShareOutline } from 'react-icons/io5';
 
 export const LikeShareProps = {
-	likes: PropTypes.number.isRequired,
+	likes: PropTypes.number,
 	index: PropTypes.number.isRequired,
 	data: PropTypes.array.isRequired,
 };

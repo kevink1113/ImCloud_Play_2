@@ -81,7 +81,7 @@ let data = [
 ];
 
 const roomProps = {
-	match: PropTypes.element,
+	match: PropTypes.object,
 };
 
 class OtherCodyList extends Component {
