@@ -1,31 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import moment from 'moment';
+import PropTypes from 'prop-types';
 import Calendar from 'react-calendar-multiday';
+
+export const CalendarProps = {
+	selectedDays: PropTypes.array,
+};
 
 const reactToChange = (ob) => {
 	console.warn(ob);
 };
 
-class AttendCal extends Component {
+const AttendCal = ({ selectedDays }) => {
+	/*
 	onChange = (date) => {
 		this.setState({ date });
 		console.log('selected Date>> ' + this.state.date);
 	};
+	*/
 
-	render() {
-		return (
-			<CalendarContain>
-				<Calendar
-					reset={false}
-					isMultiple={true}
-					selected={this.props.selectedDays}
-					onChange={reactToChange}
-				/>
-			</CalendarContain>
-		);
-	}
-}
+	return (
+		<CalendarContain>
+			<Calendar reset={false} isMultiple={true} selected={selectedDays} onChange={reactToChange} />
+		</CalendarContain>
+	);
+};
+
+AttendCal.propTypes = CalendarProps;
 
 const CalendarContain = styled.div`
 	margin: 50px;

@@ -1,10 +1,7 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import OtherCodyPhoto from '../components/CodyPhoto';
-import Statistics from '../components/Statistics';
-import Button from '../components/Button';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import SideBar from '../components/SideBar';
 
 const data = [
@@ -70,6 +67,52 @@ const data = [
 	},
 ];
 
+const roomProps = {
+	match: PropTypes.element,
+};
+
+class MyCodyRoomList extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			detail: false,
+		};
+	}
+
+	render() {
+		return (
+			<MyCodyContainer>
+				<SideBar />
+				<ListContainer>
+					{data.map((value, index) => {
+						return (
+							<CodyContainerLink
+								key={index}
+								to={`${this.props.match.url}/${index}`}
+								style={{ textDecoration: 'none' }}
+							>
+								<CodyContainer
+									onClick={() => {
+										this.setState({ detail: true });
+										document.body.style.overflowY = 'scroll';
+									}}
+									// href={`https://lookylooks/mycody/${index}`}
+									key={index}
+								>
+									<img src={value.img} />
+									<p>{value.date}</p>
+								</CodyContainer>
+							</CodyContainerLink>
+						);
+					})}
+				</ListContainer>
+			</MyCodyContainer>
+		);
+	}
+}
+
+MyCodyRoomList.propTypes = roomProps;
+export default MyCodyRoomList;
 const MyCodyContainer = styled.div`
 	display: flex;
 `;
@@ -80,8 +123,13 @@ const ListContainer = styled.div`
 	flex-wrap: wrap;
 `;
 
-const CodyContainer = styled.a`
+const CodyContainerLink = styled(Link)`
 	margin: 20px;
+`;
+
+const CodyContainer = styled.div`
+	margin: 0;
+
 	border-radius: 7px;
 	border-top-left-radius: 7px;
 	border-top-right-radius: 7px;
@@ -106,41 +154,3 @@ const CodyContainer = styled.a`
 	text-decoration: none;
 	color: black;
 `;
-
-class MyCodyRoomList extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			detail: false,
-		};
-	}
-
-	render() {
-		return (
-			<MyCodyContainer>
-				<SideBar />
-				<ListContainer>
-					{data.map((value, index) => {
-						return (
-							<Link to={`${this.props.match.url}/${index}`} style={{ textDecoration: 'none' }}>
-								<CodyContainer
-									onClick={() => {
-										this.setState({ detail: true });
-										document.body.style.overflowY = 'scroll';
-									}}
-									// href={`https://lookylooks/mycody/${index}`}
-									key={index}
-								>
-									<img src={value.img} />
-									<p>{value.date}</p>
-								</CodyContainer>
-							</Link>
-						);
-					})}
-				</ListContainer>
-			</MyCodyContainer>
-		);
-	}
-}
-
-export default MyCodyRoomList;

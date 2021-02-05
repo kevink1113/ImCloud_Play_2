@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { Component } from 'react';
+import styled from 'styled-components';
 import moment from 'moment';
 import { BiCalendarCheck } from 'react-icons/bi';
 import AttendCal from '../components/AttendCal';
@@ -15,11 +15,12 @@ const selectedDays = [
 ];
 
 class Attend extends Component {
+	/*
 	onChange = (date) => {
 		this.setState({ date });
 		console.log('selected Date>> ' + this.state.date);
 	};
-
+	*/
 	render() {
 		return (
 			<>

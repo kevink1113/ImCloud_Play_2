@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { HorizontalBar, Doughnut } from '@reactchartjs/react-chart.js';
+
+export const statisticsProps = {
+	data: PropTypes.array.isRequired,
+	data2: PropTypes.array.isRequired,
+};
 
 class Statistics extends Component {
 	render() {
@@ -31,6 +37,7 @@ class Statistics extends Component {
 		);
 	}
 }
+Statistics.propTypes = statisticsProps;
 
 export default Statistics;
 

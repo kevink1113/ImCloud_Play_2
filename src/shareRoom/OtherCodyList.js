@@ -1,13 +1,7 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import OtherCodyPhoto from '../components/CodyPhoto';
-import Statistics from '../components/Statistics';
-import Button from '../components/Button';
 import { Link } from 'react-router-dom';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { BsBookmarkFill, BsBookmark } from 'react-icons/bs';
-import { IoShareOutline } from 'react-icons/io5';
-
 import LikeShare from '../components/LikeShare';
 import SideBarOther from '../components/SideBarOther';
 
@@ -86,6 +80,58 @@ let data = [
 	},
 ];
 
+const roomProps = {
+	match: PropTypes.element,
+};
+
+class OtherCodyList extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			detail: false,
+			like: false,
+			bookmark: false,
+		};
+	}
+
+	render() {
+		return (
+			<MyCodyContainer>
+				<SideBarOther />
+				<ListContainer>
+					{data.map((value, index) => {
+						return (
+							<div key={index}>
+								<CodyContainer
+									onClick={() => {
+										this.setState({ detail: true });
+										document.body.style.overflowY = 'scroll';
+									}}
+									// href={`https://lookylooks/mycody/${index}`}
+								>
+									<Link
+										to={`${this.props.match.url}/${index}`}
+										style={{ textDecoration: 'none', color: 'black' }}
+									>
+										<img src={value.img} />
+										<p>OTHER {value.date}</p>
+									</Link>
+
+									<LikeShare index={index} data={data} />
+								</CodyContainer>
+							</div>
+						);
+					})}
+				</ListContainer>
+			</MyCodyContainer>
+		);
+	}
+}
+
+OtherCodyList.propTypes = roomProps;
+
+export default OtherCodyList;
+
 const MyCodyContainer = styled.div`
 	display: flex;
 `;
@@ -123,51 +169,3 @@ const CodyContainer = styled.a`
 	text-decoration: none;
 	color: black;
 `;
-
-class OtherCodyList extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			detail: false,
-			like: false,
-			bookmark: false,
-		};
-	}
-
-	render() {
-		const { like, bookmark } = this.state;
-		return (
-			<MyCodyContainer>
-				<SideBarOther />
-				<ListContainer>
-					{data.map((value, index) => {
-						return (
-							<div>
-								<CodyContainer
-									onClick={() => {
-										this.setState({ detail: true });
-										document.body.style.overflowY = 'scroll';
-									}}
-									// href={`https://lookylooks/mycody/${index}`}
-									key={index}
-								>
-									<Link
-										to={`${this.props.match.url}/${index}`}
-										style={{ textDecoration: 'none', color: 'black' }}
-									>
-										<img src={value.img} />
-										<p>OTHER {value.date}</p>
-									</Link>
-
-									<LikeShare index={index} data={data} />
-								</CodyContainer>
-							</div>
-						);
-					})}
-				</ListContainer>
-			</MyCodyContainer>
-		);
-	}
-}
-
-export default OtherCodyList;

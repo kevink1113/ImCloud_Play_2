@@ -1,9 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import CodyPhoto from './components/CodyPhoto';
 import Statistics from './components/Statistics';
 import Button from './components/Button';
-import Play2_MainPage from './components/Play2_MainPage';
 import SideBar from './components/SideBar';
 import SideBarOther from './components/SideBarOther';
 
@@ -92,21 +92,6 @@ const CodyDetailContainer = styled.div`
 	display: flex;
 `;
 
-const InfoContainer = styled.div`
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	width: 500px;
-	h3 {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	li {
-		padding-bottom: 20px;
-	}
-`;
-
 const StyledCodyDetail = styled.div`
 	display: flex;
 	justify-content: space-evenly;
@@ -126,6 +111,10 @@ const ButtonContainer = styled.div`
 	align-items: center;
 	justify-content: space-evenly;
 `;
+
+export const codyProps = {
+	isOther: PropTypes.bool,
+};
 
 class OtherCodyDetail extends Component {
 	render() {
@@ -160,5 +149,6 @@ class OtherCodyDetail extends Component {
 		);
 	}
 }
+OtherCodyDetail.propTypes = codyProps;
 
 export default OtherCodyDetail;

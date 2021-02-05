@@ -1,26 +1,15 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import OtherCodyPhoto from '../components/CodyPhoto';
-import Statistics from '../components/Statistics';
-import Button from '../components/Button';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { BsBookmarkFill, BsBookmark } from 'react-icons/bs';
 import { IoShareOutline } from 'react-icons/io5';
 
-const StyledLikeShare = styled.div`
-	display: flex;
-	.icon {
-		cursor: pointer;
-		padding: 10px;
-		padding-left: 20px;
-	}
-`;
-
-const Likes = styled.div`
-	display: flex;
-	align-items: center;
-`;
+export const LikeShareProps = {
+	likes: PropTypes.number.isRequired,
+	index: PropTypes.number.isRequired,
+	data: PropTypes.array.isRequired,
+};
 
 class LikeShare extends Component {
 	constructor(props) {
@@ -89,4 +78,20 @@ class LikeShare extends Component {
 	}
 }
 
+LikeShare.propTypes = LikeShareProps;
+
 export default LikeShare;
+
+const StyledLikeShare = styled.div`
+	display: flex;
+	.icon {
+		cursor: pointer;
+		padding: 10px;
+		padding-left: 20px;
+	}
+`;
+
+const Likes = styled.div`
+	display: flex;
+	align-items: center;
+`;

@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import UploadPhoto from '../upload/UploadPhoto';
-import Attend from '../attendence/Attend';
 
-import MyCodyRoom from '../myCodyRoom/MyCodyRoom';
-import OtherCodyDetail from '../CodyDetail';
-import MyCodyRoomList from '../myCodyRoom/MyCodyRoomList';
-
+/*
 const obj = {
 	//각 메뉴별 표시할 컨텐츠
 	1: <UploadPhoto />,
@@ -14,56 +10,29 @@ const obj = {
 	3: <OtherCodyDetail isOther />,
 	4: <Attend />,
 };
+*/
 
-const MenuContainer = styled.div`
-	display: flex;
-	margin: 1px 1px;
-`;
-
-const MenuButton = styled.a`
-	background-color: rgb(240, 240, 240);
-	border-radius: 7px;
-	padding: 17px 0px;
-	margin: 20px 0px;
-	border: 1px solid rgb(200, 200, 200);
-	flex-grow: 1;
-	text-align: center;
-	border-bottom-right-radius: 0px;
-	border-bottom-left-radius: 0px;
-
-	color: black;
-	text-decoration: none;
-
-	cursor: pointer;
-
-	transition: all 0.3s;
-	&:hover {
-		background-color: white;
-		border: 1px solid rgb(180, 180, 180);
-		border-bottom: 1px solid rgb(1000, 1000, 1000);
-	}
-
-	&:focus {
-		outline: none;
-	}
-
-	&.selected {
-		background-color: rgb(1000, 1000, 1000);
-		border: 1px solid rgb(200, 200, 200);
-		border-bottom: 1px solid rgb(1000, 1000, 1000);
-	}
-`;
+export const mainPageProps = {
+	startNumber: PropTypes.number.isRequired,
+	tab1: PropTypes.bool.isRequired,
+	tab2: PropTypes.bool.isRequired,
+	tab3: PropTypes.bool.isRequired,
+	tab4: PropTypes.bool.isRequired,
+};
 
 class Play2_MainPage extends Component {
-	state = {
-		//현재 표시되는 창 id, 1부터 시작
-		activeTab: this.props.startNumber,
+	constructor(props) {
+		super(props);
+		this.state = {
+			//현재 표시되는 창 id, 1부터 시작
+			activeTab: this.props.startNumber,
 
-		//탭 정보, 배열 인덱스에 따라 0부터 시작
-		//탭이 true이면 선택된 상태, false면 선택 안됨
-		//tabInfo: [true, false, false, false],
-		tabInfo: [this.props.tab1, this.props.tab2, this.props.tab3, this.props.tab4],
-	};
+			//탭 정보, 배열 인덱스에 따라 0부터 시작
+			//탭이 true이면 선택된 상태, false면 선택 안됨
+			//tabInfo: [true, false, false, false],
+			tabInfo: [this.props.tab1, this.props.tab2, this.props.tab3, this.props.tab4],
+		};
+	}
 
 	render() {
 		return (
@@ -123,5 +92,45 @@ class Play2_MainPage extends Component {
 		);
 	}
 }
+Play2_MainPage.propTypes = mainPageProps;
 
 export default Play2_MainPage;
+
+const MenuContainer = styled.div`
+	display: flex;
+	margin: 1px 1px;
+`;
+
+const MenuButton = styled.a`
+	background-color: rgb(240, 240, 240);
+	border-radius: 7px;
+	padding: 17px 0px;
+	margin: 20px 0px;
+	border: 1px solid rgb(200, 200, 200);
+	flex-grow: 1;
+	text-align: center;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+
+	color: black;
+	text-decoration: none;
+
+	cursor: pointer;
+
+	transition: all 0.3s;
+	&:hover {
+		background-color: white;
+		border: 1px solid rgb(180, 180, 180);
+		border-bottom: 1px solid rgb(1000, 1000, 1000);
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&.selected {
+		background-color: rgb(1000, 1000, 1000);
+		border: 1px solid rgb(200, 200, 200);
+		border-bottom: 1px solid rgb(1000, 1000, 1000);
+	}
+`;

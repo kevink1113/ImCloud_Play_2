@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { BsBookmarkFill, BsBookmark } from 'react-icons/bs';
 import { IoShareOutline } from 'react-icons/io5';
-import Button from './Button';
+
+export const likeShareProps = {
+	likes: PropTypes.number.isRequired,
+	showLikeShare: PropTypes.bool,
+};
 
 const PhotoContainer = styled.div`
 	img {
@@ -33,10 +38,13 @@ const Likes = styled.div`
 `;
 
 class LikeShare extends Component {
-	state = {
-		like: false,
-		bookmark: false,
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			like: false,
+			bookmark: false,
+		};
+	}
 
 	render() {
 		const { like, bookmark } = this.state;
@@ -107,5 +115,7 @@ class CodyPhoto extends Component {
 		);
 	}
 }
+
+LikeShare.propTypes = CodyPhoto.propTypes = likeShareProps;
 
 export default CodyPhoto;

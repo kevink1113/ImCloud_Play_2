@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; //React-Router import
-import PropTypes from 'prop-types';
-import { darken } from 'polished';
 
 const StyledSideBar = styled.ul`
 	min-width: 170px;
@@ -17,7 +15,7 @@ const StyledLink = styled(Link)`
 	text-decoration: none;
 `;
 
-const SideBarOther = ({}) => {
+const SideBarOther = () => {
 	return (
 		<StyledSideBar>
 			<li>

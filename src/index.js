@@ -4,14 +4,9 @@ import './index.css';
 import Attend from './attendence/Attend';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
-
-import OtherCodyDetail from './CodyDetail';
-
 import { BrowserRouter, Route } from 'react-router-dom';
-import Play2_MainPage from './components/Play2_MainPage';
 import UploadPhoto from './upload/UploadPhoto';
 import MyCodyRoom from './myCodyRoom/MyCodyRoom';
-import MyCodyRoomList from './myCodyRoom/MyCodyRoomList';
 import OtherCody from './shareRoom/OtherCody';
 
 const GlobalStyle = createGlobalStyle`

@@ -1,13 +1,16 @@
-import React, { Component, useState } from 'react';
-import styled from 'styled-components';
-import { matchPath, Route } from 'react-router-dom';
+import React from 'react';
+import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import MyCodyRoomList from './MyCodyRoomList';
-import OtherCodyPhoto from '../components/CodyPhoto';
 import OtherCodyDetail from '../CodyDetail';
 import Play2_MainPage from '../components/Play2_MainPage';
 
-function MyCodyRoom({ match }) {
+export const roomProps = {
+	match: PropTypes.element,
+};
+
+export function MyCodyRoom({ match }) {
 	return (
 		<>
 			<Play2_MainPage startNumber="2" tab1={false} tab2={true} tab3={false} tab4={false} />
@@ -16,5 +19,7 @@ function MyCodyRoom({ match }) {
 		</>
 	);
 }
+
+MyCodyRoom.propTypes = roomProps;
 
 export default MyCodyRoom;
