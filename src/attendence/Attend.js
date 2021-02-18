@@ -5,6 +5,8 @@ import { BiCalendarCheck } from 'react-icons/bi';
 import AttendCal from '../components/AttendCal';
 import Play2_MainPage from '../components/Play2_MainPage';
 
+import Calendar from '../Calendar';
+
 const selectedDays = [
 	moment().add(-1, 'days'),
 	moment().add(-3, 'days'),
@@ -24,6 +26,7 @@ class Attend extends Component {
 	render() {
 		return (
 			<>
+				<Calendar />
 				<Play2_MainPage startNumber="4" tab1={false} tab2={false} tab3={false} tab4={true} />
 				<AttendContainer>
 					<AttendCal selectedDays={selectedDays} />

@@ -8,6 +8,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import UploadPhoto from './upload/UploadPhoto';
 import MyCodyRoom from './myCodyRoom/MyCodyRoom';
 import OtherCody from './shareRoom/OtherCody';
+import Following from './follow/Following';
+
+// import MyApp from './Calendar';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -22,11 +25,13 @@ const GlobalStyle = createGlobalStyle`
 function Play2() {
 	return (
 		<div className="total">
+			{/*<MyApp />*/}
 			{/*  메뉴창  */}
 			<Route exact path="/" component={UploadPhoto}></Route>
 			<Route path="/my" component={MyCodyRoom}></Route>
 			<Route path="/others" component={OtherCody}></Route>
 			<Route path="/attend" component={Attend}></Route>
+			<Route path="/follow" component={Following}></Route>
 		</div>
 	);
 }

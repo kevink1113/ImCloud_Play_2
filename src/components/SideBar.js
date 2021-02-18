@@ -23,6 +23,9 @@ const SideBar = () => {
 			</li>
 			<ul>
 				<li>
+					<StyledLink to="/my">전체 코디</StyledLink>
+				</li>
+				<li>
 					<StyledLink to="/my?shared">공유한 코디</StyledLink>
 				</li>
 			</ul>
@@ -31,10 +34,10 @@ const SideBar = () => {
 			</li>
 			<ul>
 				<li>
-					<StyledLink to="/my?others?saved">저장된 코디</StyledLink>
+					<StyledLink to="/my?others?like">좋아요한 코디</StyledLink>
 				</li>
 				<li>
-					<StyledLink to="/my?others?saved">좋아요한 코디</StyledLink>
+					<StyledLink to="/follow">팔로잉</StyledLink>
 				</li>
 			</ul>
 		</StyledSideBar>
